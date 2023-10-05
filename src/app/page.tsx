@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { UserButton, auth } from '@clerk/nextjs'
-import Image from 'next/image'
 import Link from 'next/link'
 import {LogIn} from 'lucide-react';
+import FileUpload from '@/components/FileUpload';
 
 export default async function Home() {
   const { userId } = await auth();
@@ -12,7 +12,7 @@ export default async function Home() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center">
-            <h1 className="mr-3 text-5xl font-semibold">Chat with any pdf</h1>
+            <h1 className="mr-3 my-2 lg:text-5xl text-2xl font-semibold">Chat with any pdf</h1>
             <UserButton afterSignOutUrl='/' />
           </div>
           <div className="flex mt-2">
@@ -22,7 +22,7 @@ export default async function Home() {
             Join millions of students, researchers and professionals to instantly answer questions and understand research with AI
           </p>
           <div className="w-full mt-4">
-            {isAuth ? (<h1>File Upload</h1>) : (
+            {isAuth ? (<FileUpload />) : (
               <Link href='/sign-in'>
                 <Button>
                   Login to get Started!
