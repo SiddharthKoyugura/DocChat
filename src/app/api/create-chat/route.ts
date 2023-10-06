@@ -1,4 +1,4 @@
-import { loadS3IntoPinecone } from "@/lib/pinecone";
+// import { loadS3IntoPinecone } from "@/lib/pinecone";
 import { NextResponse } from "next/server";
 import { db } from '@/lib/db';
 import { getS3Url } from "@/lib/s3";
@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
     try {
         const body = await req.json();
         const { file_key, file_name } = body;
-        await loadS3IntoPinecone(file_key);
+        // await loadS3IntoPinecone(file_key);
         const chat_id = await db.insert(chats).values({
             fileKey: file_key,
             pdfName: file_name,

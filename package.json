@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
+    "dev": "set NODE_OPTIONS='--max-old-space-size=90000' && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-query": "^4.35.7",
     "@types/md5": "^2.3.3",
+    "ai": "^2.2.14",
     "aws-sdk": "^2.1470.0",
     "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",

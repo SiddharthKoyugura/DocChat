@@ -28,7 +28,6 @@ const FileUpload = () => {
                 toast.error("File size should not be greater than 10MB");
                 return;
             }
-
             try {
                 setUploading(true);
                 const data = await uploadToS3(file);
@@ -39,7 +38,10 @@ const FileUpload = () => {
                 mutate(data, {
                     onSuccess: (chat_id) => {
                         toast.success("Chat created");
-                        router.push(`/chat/${chat_id}`);
+                        // alert(chat_id[0]);
+                        console.log("hello world" ,chat_id.chat_id);
+                        // alert("check console")
+                        router.push(`/chat/${chat_id.chat_id}`);
                     },
                     onError: (err) => {
                         toast.error("Error creating chat!");
