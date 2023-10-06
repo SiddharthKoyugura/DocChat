@@ -6,6 +6,7 @@ import { db } from '@/lib/db';
 import { chats } from "@/lib/db/schema";
 import ChatSideBar from '@/components/ChatSideBar';
 import PDFViewer from '@/components/PDFViewer';
+import ChatComponent from '@/components/ChatComponent';
 
 type Props = {
     params: {
@@ -44,7 +45,7 @@ const ChartPage = async ({ params: { chatId } }: Props) => {
 
                 {/* Chat component */}
                 <div className='flex-[3] border-l-4 border-l-slate-200'>
-                    {/* <ChatComponent /> */}
+                    <ChatComponent />
                 </div>
             </div>
         </div>
