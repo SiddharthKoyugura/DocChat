@@ -7,18 +7,18 @@ import md5 from 'md5'
 import { convertToAscii } from "./utils";
 
 
-let pinecone: PineconeClient | null = null;
+// let pinecone: PineconeClient | null = null;
 
-export const getPineconeClient = async () => {
-    if (!pinecone) {
-        pinecone = new PineconeClient();
-        await pinecone.init({
-            environment: process.env.PINECONE_ENVIRONMENT!,
-            apiKey: process.env.PINECONE_API_KEY!,
-        })
-    }
-    return pinecone;
-}
+// export const getPineconeClient = async () => {
+//     if (!pinecone) {
+//         pinecone = new PineconeClient();
+//         await pinecone.init({
+//             environment: process.env.PINECONE_ENVIRONMENT!,
+//             apiKey: process.env.PINECONE_API_KEY!,
+//         })
+//     }
+//     return pinecone;
+// }
 
 type PDFPage = {
     pageContent: string,
@@ -39,24 +39,29 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
     // 2. Split and segment the pdf
     const documents = await Promise.all(pages.map(prepareDocument));
-    // console.log("docccccs", documents);
-    if(documents.length === 0 ){
-        throw new Error("document not found");
-    }
-    // 3.Vectorise and embed individual documents
-    let vectors = await Promise.all(documents.flat().map(embedDocument));
-    console.log("Vectorssss", vectors[0].values, vectors[0].values.length);
-    if(vectors.length === 0){
-        throw new Error("no vector");
-    }
-    // 4.Upload to pincone
-    const client = await getPineconeClient();
-    const pineconeIndex = client.Index('chatpdf');
+    console.log("docccccs", documents);
 
-    console.log("inserting vectors into pinecone");
-    PineconeUtils.chunkedUpsert(pineconeIndex, vectors, undefined, 10);
-    // console.log(documents);
-    return documents[0];
+    let vectors = await Promise.all(documents.flat().map(embedDocument));
+    console.log("docccccs", documents);
+
+
+    // if(documents.length === 0 ){
+    //     throw new Error("document not found");
+    // }
+    // // 3.Vectorise and embed individual documents
+    // let vectors = await Promise.all(documents.flat().map(embedDocument));
+    // console.log("Vectorssss", vectors[0].values, vectors[0].values.length);
+    // if(vectors.length === 0){
+    //     throw new Error("no vector");
+    // }
+    // // 4.Upload to pincone
+    // const client = await getPineconeClient();
+    // const pineconeIndex = client.Index('chatpdf');
+
+    // console.log("inserting vectors into pinecone");
+    // PineconeUtils.chunkedUpsert(pineconeIndex, vectors, undefined, 10);
+    // // console.log(documents);
+    // return documents[0];
 }
 
 async function embedDocument(doc: Document) {

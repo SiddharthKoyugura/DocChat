@@ -1,4 +1,4 @@
-// import { loadS3IntoPinecone } from "@/lib/pinecone";
+import { loadS3IntoPinecone } from "@/lib/pinecone";
 import { NextResponse } from "next/server";
 import { db } from '@/lib/db';
 import { getS3Url } from "@/lib/s3";
