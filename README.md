@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -13,3 +11,7 @@ pnpm dev
 # or
 bun dev
 ```
+
+# Demo
+![Screenshot (1)](https://github.com/SiddharthKoyugura/DocChat/assets/93535758/eb08d9e4-5a19-41fd-a750-22536a3f2309)
+![Screenshot (2)](https://github.com/SiddharthKoyugura/DocChat/assets/93535758/1782f7c6-92a8-48fe-b4bb-66e6a3458bac)
